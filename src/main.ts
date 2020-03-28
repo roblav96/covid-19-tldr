@@ -9,8 +9,16 @@ Vue.config.devtools = false
 Vue.config.performance = false
 Vue.config.productionTip = false
 
-import CarbonComponentsVue from '@carbon/vue/src/index'
-Vue.use(CarbonComponentsVue)
+import Buefy, { BuefyConfig } from 'buefy'
+Vue.use(Buefy, {
+	defaultNoticeQueue: false,
+	defaultSnackbarDuration: 5000,
+	defaultToastDuration: 5000,
+	defaultInputAutocomplete: 'off',
+	defaultTooltipType: 'is-dark',
+	defaultDialogConfirmText: 'Confirm',
+	defaultDialogCancelText: 'Cancel',
+} as BuefyConfig)
 
 import App from '@/App.vue'
 import router from '@/router'
