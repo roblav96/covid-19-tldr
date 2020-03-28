@@ -1,4 +1,4 @@
-# covid-19-tldr
+# 😷 COVID-19 TL;DR (Too Long, Didn't Read) Data Visualization Dashboard
 
 ## Project setup
 
