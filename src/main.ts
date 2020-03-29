@@ -1,8 +1,11 @@
 import '@/plugins/pwa'
+
 import '@ibm/plex/css/ibm-plex.css'
-import 'carbon-components/css/carbon-components.css'
+import '@mdi/font/css/materialdesignicons.css'
+import 'tailwindcss/utilities.css'
+
 // import '@/styles/fonts.scss'
-// import '@/styles/styles.scss'
+import '@/styles/styles.scss'
 
 import Vue from 'vue'
 Vue.config.devtools = false
@@ -11,13 +14,13 @@ Vue.config.productionTip = false
 
 import Buefy, { BuefyConfig } from 'buefy'
 Vue.use(Buefy, {
+	defaultDialogCancelText: 'Cancel',
+	defaultDialogConfirmText: 'Confirm',
+	defaultIconPack: 'mdi',
+	defaultInputAutocomplete: 'off',
 	defaultNoticeQueue: false,
 	defaultSnackbarDuration: 5000,
 	defaultToastDuration: 5000,
-	defaultInputAutocomplete: 'off',
-	defaultTooltipType: 'is-dark',
-	defaultDialogConfirmText: 'Confirm',
-	defaultDialogCancelText: 'Cancel',
 } as BuefyConfig)
 
 import App from '@/App.vue'

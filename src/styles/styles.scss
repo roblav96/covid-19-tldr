@@ -1,1 +1,23 @@
-// @import '~carbon-components/scss/globals/scss/styles.scss';
+@import '~bulma/sass/utilities/initial-variables';
+
+@debug debug($family-sans-serif);
+
+$gap: 32px;
+$tablet: 640px;
+$desktop: 768px;
+$widescreen: 1024px;
+$fullhd: 1280px;
+
+$icon-dimensions: 24px;
+$icon-dimensions-small: 18px;
+$icon-dimensions-medium: 36px;
+$icon-dimensions-large: 48px;
+
+$navbar-height: 3.5rem;
+$input-icon-active-color: $grey;
+$border-light: $grey-lighter;
+
+@import '~bulma/sass/utilities/_all';
+
+@import '~bulma';
+@import '~buefy/src/scss/buefy';

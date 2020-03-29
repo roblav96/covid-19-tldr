@@ -2,5 +2,5 @@ $font-prefix: '~@ibm/plex';
 @import '~@ibm/plex/scss/sans/index';
 @import '~@ibm/plex/scss/mono/index';
 
-// $mdi-font-path: '~@mdi/font/fonts';
-// @import '~@mdi/font/scss/materialdesignicons';
+$mdi-font-path: '~@mdi/font/fonts';
+@import '~@mdi/font/scss/materialdesignicons';

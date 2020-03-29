@@ -1,33 +1,23 @@
 <template>
-	<div>
-		<h1>Example use of @carbon/vue</h1>
-		<cv-text-input label="Who are you?" v-model="yourName" placeholder="your name" />
-		<cv-button @click="onClick">Hello {{ yourName }}</cv-button>
-		<cv-modal :visible="visible" @modal-hidden="modalClosed">
-			<template slot="title">Welcome to @carbon/vue {{ yourName }}</template>
-			<template slot="content">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, seed do eiusmod tempor
-					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-			</template>
-		</cv-modal>
-	</div>
+	<section class="section">
+		<div class="container text-center">
+			<div class="columns is-mobile is-centered mb-6">
+				<div class="column max-w-xs">Covid-19 TLDR</div>
+			</div>
+			<h2 class="subtitle is-italic has-text-white">
+				😷 COVID-19 TLDR (Too Long, Didn't Read) data visualization dashboard
+			</h2>
+			<router-link class="button is-rounded is-medium is-success pl-5" to="signup">
+				<b-icon size="is-medium" icon="account-plus" class="ml-1 mr-3" />
+				<strong>Sign Up</strong>
+			</router-link>
+		</div>
+	</section>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component
-export default class Home extends Vue {
-	yourName = ''
-	visible = false
-	onClick() {
-		this.visible = true
-	}
-	modalClosed() {
-		this.visible = false
-	}
-}
+export default class Home extends Vue {}
 </script>

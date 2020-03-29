@@ -1,27 +1,33 @@
-const convertJsToSass = require('@epegzz/sass-vars-loader/src/utils/convertJsToSass')
 const flat = require('flat')
 const path = require('path')
-const readVarsFromTypescriptFiles = require('@epegzz/sass-vars-loader/src/utils/readVarsFromTypescriptFiles')
 
-let theme = readVarsFromTypescriptFiles([path.resolve(__dirname, 'src/styles/theme.ts')])
-theme = flat(theme, { delimiter: '-' })
+const convertJsToSass = require('@epegzz/sass-vars-loader/src/utils/convertJsToSass')
+const readVarsFromJavascriptFiles = require('@epegzz/sass-vars-loader/src/utils/readVarsFromJavascriptFiles')
+const theme = flat(
+	readVarsFromJavascriptFiles([path.resolve(__dirname, 'src/styles/theme.config.js')]),
+	{ delimiter: '-' },
+)
 
 /** @type { import("@vue/cli-service").ProjectOptions } */
 module.exports = {
 	css: {
 		loaderOptions: {
-			sass: { prependData: convertJsToSass(theme, 'sass') },
-			scss: { prependData: convertJsToSass(theme, 'scss') },
+			sass: {
+				prependData: `${convertJsToSass(
+					theme,
+					'sass',
+				)}\n@import "~@/styles/variables.scss"`,
+			},
+			scss: {
+				prependData: `${convertJsToSass(
+					theme,
+					'scss',
+				)}\n@import "~@/styles/variables.scss";`,
+			},
 		},
 		...(process.env.NODE_ENV == 'development' && {
 			sourceMap: true,
 		}),
-	},
-	pluginOptions: {
-		'style-resources-loader': {
-			preProcessor: 'scss',
-			patterns: [path.resolve(__dirname, 'src/styles/variables.scss')],
-		},
 	},
 
 	...(process.env.NODE_ENV == 'production' && {

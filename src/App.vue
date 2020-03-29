@@ -1,6 +1,6 @@
 <template>
 	<div id="app" v-show="ready">
-		<h1>App.vue</h1>
+		<NavBar />
 		<router-view />
 	</div>
 </template>
@@ -8,7 +8,11 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
-@Component
+@Component({
+	components: {
+		NavBar: () => import('@/components/NavBar.vue'),
+	},
+})
 export default class App extends Vue {
 	ready = false
 	async mounted() {
@@ -16,3 +20,5 @@ export default class App extends Vue {
 	}
 }
 </script>
+
+<!-- <style lang="scss" src="@/styles/styles.scss"></style> -->

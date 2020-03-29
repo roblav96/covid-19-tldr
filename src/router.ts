@@ -17,6 +17,7 @@ export const routes = [
 
 export const router = new VueRouter({
 	base: process.env.BASE_URL,
+	linkActiveClass: 'is-active',
 	mode: 'history',
 	routes,
 })
