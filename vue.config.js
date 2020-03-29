@@ -7,23 +7,17 @@ const theme = flat(
 	readVarsFromJavascriptFiles([path.resolve(__dirname, 'src/styles/theme.config.js')]),
 	{ delimiter: '-' },
 )
+const prependData = {
+	sass: `@import "~@/styles/variables.scss"\n${convertJsToSass(theme, 'sass')}`,
+	scss: `@import "~@/styles/variables.scss";\n${convertJsToSass(theme, 'scss')}`,
+}
 
 /** @type { import("@vue/cli-service").ProjectOptions } */
 module.exports = {
 	css: {
 		loaderOptions: {
-			sass: {
-				prependData: `${convertJsToSass(
-					theme,
-					'sass',
-				)}\n@import "~@/styles/variables.scss"`,
-			},
-			scss: {
-				prependData: `${convertJsToSass(
-					theme,
-					'scss',
-				)}\n@import "~@/styles/variables.scss";`,
-			},
+			sass: { prependData: prependData.sass },
+			scss: { prependData: prependData.scss },
 		},
 		...(process.env.NODE_ENV == 'development' && {
 			sourceMap: true,
@@ -38,9 +32,11 @@ module.exports = {
 		],
 	}),
 
+	// configureWebpack(config) {},
+
 	/** @param config { import("webpack-chain") } */
 	chainWebpack: (config) => {
-		config.devtool(process.env.NODE_ENV == 'development' ? 'eval-source-map' : 'source-map')
+		// config.devtool(process.env.NODE_ENV == 'development' ? 'eval-source-map' : 'source-map')
 		config.plugins.delete('no-emit-on-errors')
 		config.plugin('friendly-errors').tap((options) => {
 			options[0].clearConsole = false

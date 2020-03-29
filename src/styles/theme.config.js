@@ -1,7 +1,9 @@
 const themes = require('@carbon/themes')
 const colors = require('@carbon/colors')
 
-// const carbon = (themes as any).g10 as typeof themes.default.g10
+/** @type { import("@carbon/themes").default } */
+const carbon = themes.g10
+
 const fontFamilies = {
 	mono: `'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace`,
 	sans: `'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif`,
