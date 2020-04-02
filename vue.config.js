@@ -36,7 +36,7 @@ module.exports = {
 
 	/** @param config { import("webpack-chain") } */
 	chainWebpack: (config) => {
-		// config.devtool(process.env.NODE_ENV == 'development' ? 'eval-source-map' : 'source-map')
+		config.devtool(process.env.NODE_ENV == 'development' ? 'eval-source-map' : 'source-map')
 		config.plugins.delete('no-emit-on-errors')
 		config.plugin('friendly-errors').tap((options) => {
 			options[0].clearConsole = false
